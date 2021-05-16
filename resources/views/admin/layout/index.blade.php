@@ -26,8 +26,11 @@
         <!-- Navbar -->
     @include('admin.components.navbar')
     <!-- End Navbar -->
-
-        @yield('content')
+        <div class="content">
+            <div class="container-fluid">
+                @yield('content')
+            </div>
+        </div>
     </div>
 </div>
 
