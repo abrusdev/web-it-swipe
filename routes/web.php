@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,14 +20,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', [DashboardController::class, 'index'])
-    ->name('dashboard');
-
-Route::resource('/admin/posts/create', PostController::class)
+Route::resource('/admin/login', LoginController::class)
     ->only(['index', 'store'])
-    ->name('index', 'posts.create');
+    ->name('index','login');
 
-//Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-//
-//
-//});
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+    Route::get('/logout', [LoginController::class, 'logout'])
+        ->name('logout');
+
+    Route::get('/admin', [DashboardController::class, 'index'])
+        ->name('dashboard');
+
+    Route::resource('/admin/posts/create', PostController::class)
+        ->only(['index', 'store'])
+        ->name('index', 'posts.create');
+});

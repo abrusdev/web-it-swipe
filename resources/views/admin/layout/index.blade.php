@@ -20,11 +20,20 @@
 
 <body class="">
 <div class="wrapper ">
-    @include('admin.components.sidebar')
+    @if(isset($sidebar) && $sidebar)
+        @include('admin.components.sidebar')
+    @elseif(!isset($sidebar))
+        @include('admin.components.sidebar')
+    @endif
+
 
     <div class="main-panel">
-        <!-- Navbar -->
-    @include('admin.components.navbar')
+    <!-- Navbar -->
+    @if(isset($navbar) && $navbar)
+        @include('admin.components.navbar')
+    @elseif(!isset($navbar))
+        @include('admin.components.navbar')
+    @endif
     <!-- End Navbar -->
         <div class="content">
             <div class="container-fluid">
