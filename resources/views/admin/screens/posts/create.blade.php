@@ -23,7 +23,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="bmd-label-floating" for="slug">
-                                Slug ( 0 - all, 1-design, 2-web, 3-game, 4-android, 5-ios )
+                                Slug ( 1 - all, 2-design, 3-web, 4-game, 5-android, 6-ios )
                             </label>
                             <input id="slug" name="slug" type="number" class="form-control">
                         </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Posts;
+use Arr;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -14,9 +16,9 @@ class PostController extends Controller
         return response()->view('admin.screens.posts.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        $image = Posts::storeImage($request->file('image'));
-        $category_id = $request->get('slug');
+       Posts::createPost($request);
+       return redirect()->route('posts.create');
     }
 }
