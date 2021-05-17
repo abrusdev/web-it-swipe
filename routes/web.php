@@ -29,10 +29,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/logout', [LoginController::class, 'logout'])
         ->name('logout');
 
-    Route::get('/admin', [DashboardController::class, 'index'])
+    Route::get('/', [DashboardController::class, 'index'])
         ->name('dashboard');
 
-    Route::resource('/admin/posts/create', PostController::class)
+    Route::resource('/posts/create', PostController::class)
         ->only(['index', 'store'])
         ->name('index', 'posts.create');
 });
